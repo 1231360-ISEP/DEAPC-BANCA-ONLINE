@@ -1,3 +1,1 @@
 # DEAPC Banca Online
-
-Rodrigo
