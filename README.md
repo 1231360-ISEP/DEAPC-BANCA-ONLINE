@@ -28,3 +28,4 @@ Funcionalidades diponibilizadas aos vários utilizadores:
 - Administradores:
     - Apagar e criar contas
     - Analise sobre o estado financeiro das contas bancárias ativas
+    - Controlo de permissão e acesso
