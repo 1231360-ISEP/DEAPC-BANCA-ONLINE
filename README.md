@@ -50,3 +50,12 @@ Níveis de prioridade:
 | ADM03  | Apagar uma conta                    | Como Administrador quero poder apagar uma certa conta                             | Alta       |
 | ADM04  | Procurar contas por nome de Cliente | Como Administrador quero poder porcurar contas por nome de um Cliente             | Média      |
 | ADM05  | Desativar uma conta                 | Como Administrador quero poder desativar uma certa conta                          | Baixa      |
+
+## Arquitetura das páginas Web
+
+- Página principal
+- Página de autenticação
+    - Página de administrador
+        - Página de criação de uman nova conta
+    - Página de cliente
+        - Página de criação de uma transação
