@@ -56,6 +56,6 @@ Níveis de prioridade:
 - Página principal
 - Página de autenticação
     - Página de administrador
-        - Página de criação de uman nova conta
+        - Página de criação de uma nova conta
     - Página de cliente
         - Página de criação de uma transação
