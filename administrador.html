@@ -1,141 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt">
 	<head>
-	<meta charset="utf-8"/>
+		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=divice, initial-scale=1"/>
-		<title>Adicionar uma conta</title>
-		<link rel="stylesheet" hred="styles/main.css"/>
+		<title>Banca Online - Gestão de contas</title>
+		<link rel="stylesheet" href="styles/main.css"/>
+		<link rel="stylesheet" href="styles/header.css"/>
+		<link rel="stylesheet" href="styles/painel.css"/>
 		<link rel="stylesheet" href="styles/administrador.css"/>
 	</head>
-		<body>
-			<main>
-				<h1>Banca Online</h1>
-				<h2>[Administrador]</h2>
-				<a href="adicionar-conta.html"><button id="adicionar-conta">+ Adicionar Cliente</button>
-				</a>
-				<a href="login.html"><button id="sair">Sair</button>
-				</a>
-				<table>
+	<body>
+		<header>
+			<p>[Administrador]</p>
+			<a href="login.html"><button id="sair">Sair</button></a>
+		</header>
+		<main>
+			<h1>Gestão de contas</h1>
+			<div id="funcionalidades">
+				<a href="adicionar-conta.html"><button id="adicionar-conta">+ Adicionar Cliente</button></a>
+				<div>
+					<label for="pesquisa-nome">Nome:</label>
+					<input id="pesquisa-nome" type="text"/>
+					<button>Pesquisa</button>
+				</div>
+			</div>
+			<table class="main-table">
+				<thead>
 					<tr>
-						<td>
-							<label>Nome:</label>
-						</td>
-						<td>
-							<input type="text"/> 
-							<button>Pesquisa</button>
-						</td>
-				</table>
-				<table>
-					<tr>
-						<td>
-							<label>Nº da conta:</label>
-						</td>
-						<td>
-							<label>Nome do Cliente:</label>
-						</td>
-						<td>
-							<label>Saldo:</label>
-						</td>
-						<td>
-							<label>Estado:</label>
-						</td>
-						<td>
-							<label>Ação:</label>
-						</td>
+						<th>Nº da conta:</th>
+						<th>Nome do Cliente:</th>
+						<th>Saldo:</th>
+						<th>Estado:</th>
+						<th>Ação:</th>
 					</tr>
+				</thead>
+				<tbody>
 					<tr>
+						<td>123435</td>
+						<td>Alferedo Costa</td>
+						<td>654,67€</td>
+						<td>Ativa</td>
 						<td>
-							<label>123435</label>
-						</td>
-						<td>
-							<label>Alferedo Costa</label>
-						</td>
-						<td>
-							<label>654,67€</label>
-						</td>
-						<td>
-							<label>Ativa</label>
+							<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
+							<img alt="Desativar utilizador" src="images/material-symbols/delete.svg"/>
 						</td>
 					</tr>
 					<tr>
+						<td>128765</td>
+						<td>Barbara Marques</td>
+						<td>12389,65€</td>
+						<td>Ativa</td>
 						<td>
-							<label>128765</label>
-						</td>
-						<td>
-							<label>Barbara Marques</label>
-						</td>
-						<td>
-							<label>12389,65€</label>
-						</td>
-						<td>
-							<label>Ativa</label>
+							<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
+							<img alt="Desativar utilizador" src="images/material-symbols/delete.svg"/>
 						</td>
 					</tr>
 					<tr>
+						<td>138653</td>
+						<td>Henrique Santos</td>
+						<td>-13,56€</td>
+						<td>Desativa</td>
 						<td>
-							<label>138653</label>
-						</td>
-						<td>
-							<label>Henrique Santos</label>
-						</td>
-						<td>
-							<label>-13,56€</label>
-						</td>
-						<td>
-							<label>Desativa</label>
+							<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
+							<img alt="Desativar utilizador" src="images/material-symbols/delete.svg"/>
 						</td>
 					</tr>
 					<tr>
+						<td>235643</td>
+						<td>Joana Nascimento</td>
+						<td>234,76€</td>
+						<td>Ativa</td>
 						<td>
-							<label>235643</label>
-						</td>
-						<td>
-							<label>Joana Nascimento</label>
-						</td>
-						<td>
-							<label>234,76€</label>
-						</td>
-						<td>
-							<label>Ativa</label>
+							<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
+							<img alt="Desativar utilizador" src="images/material-symbols/delete.svg"/>
 						</td>
 					</tr>
+					<tr>
+						<td>126543</td>
+						<td>Mario Neves</td>
+						<td>3657,43€</td>
+						<td>Ativa</td>
 						<td>
-							<label>126543</label>
-						</td>
-						<td>
-							<label>Mario Neves</label>
-						</td>
-						<td>
-							<label>3657,43€</label>
-						</td>
-						<td>
-							<label>Ativa</label>
+							<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
+							<img alt="Desativar utilizador" src="images/material-symbols/delete.svg"/>
 						</td>
 					</tr>
+					<tr>
+						<td>245643</td>
+						<td>Óscar Silva</td>
+						<td>-2,54€</td>
+						<td>Desativa</td>
 						<td>
-							<label>245643</label>
-						</td>
-						<td>
-							<label>Óscar Silva</label>
-						</td>
-						<td>
-							<label>-2,54€</label>
-						</td>
-						<td>
-							<label>Desativa</label>
+							<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
+							<img alt="Desativar utilizador" src="images/material-symbols/delete.svg"/>
 						</td>
 					</tr>
+					<tr>
+						<td>128533</td>
+						<td>Vitor Vieira</td>
+						<td>456,87</td>
+						<td>Ativa</td>
 						<td>
-							<label>128533</label>
-						</td>
-						<td>
-							<label>Vitor Vieira</label>
-						</td>
-						<td>
-							<label>456,87</label>
-						</td>
-						<td>
-							<label>Ativa</label>
+							<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
+							<img alt="Desativar utilizador" src="images/material-symbols/delete.svg"/>
 						</td>
 					</tr>
-				</table>
+				</tbody>
+			</table>
+		</main>
+	</body>
+</html>

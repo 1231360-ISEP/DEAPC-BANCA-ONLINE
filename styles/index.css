@@ -12,13 +12,4 @@ h1 {
 
 #entrar {
 	display: inline-block;
-	padding: 20px;
-	background-color: #eeeeee;
-	border: 1px solid #000000;
-	text-decoration: none;
-	color: #000000;
-}
-
-#entrar:hover {
-	cursor: pointer;
 }

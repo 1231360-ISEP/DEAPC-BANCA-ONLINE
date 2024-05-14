@@ -10,3 +10,18 @@ body {
 	font-family: sans-serif;
 	margin: 0;
 }
+
+button, input {
+	padding: 8px 16px;
+	border: 1px solid #000000;
+}
+
+button {
+	color: #000000;
+	background-color: #eeeeee;
+}
+
+button:hover {
+	cursor: pointer;
+}
+

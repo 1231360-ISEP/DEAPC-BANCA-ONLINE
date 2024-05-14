@@ -1,0 +1,21 @@
+.main-table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: #eeeeee;
+}
+
+.main-table {
+	text-align: left;
+}
+
+.main-table thead {
+	border-bottom: 4px solid #000000;
+}
+
+.main-table tbody tr {
+	border-top: 2px solid #000000;
+}
+
+.main-table th, .main-table td {
+	padding: 8px 16px;
+}
