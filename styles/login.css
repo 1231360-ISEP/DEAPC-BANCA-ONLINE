@@ -1,0 +1,52 @@
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+}
+
+form {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 40%;
+	height: 60%;
+	border: 1px solid #000000;
+	padding: 32px;
+}
+
+h2 {
+	text-align: center;
+}
+
+div {
+	width: 100%;
+}
+
+label, input, button {
+	display: block;
+	margin: 16px 0;
+}
+
+input {
+	width: 100%;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+button {
+	padding: 20px;
+	border: 1px solid #000000;
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+	color: #000000;
+	background-color: #eeeeee;
+}
+
+button:hover {
+	cursor: pointer;
+}
