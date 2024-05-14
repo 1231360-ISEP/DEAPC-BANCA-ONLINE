@@ -5,59 +5,62 @@
 		<meta name="viewport" content="width=divice, initial-scale=1"/>
 		<title>Adicionar uma conta</title>
 		<link rel="stylesheet" hred="styles/main.css"/>
+		<link rel="stylesheet" href="styles/adicionar-conta.css"/>
 	</head>
 	<body>
 		<main>
 			<h1>Banca Online</h1>
 			<h2>[Administrador]</h2>
 			<button>Sair</button>
-			<table>
-				<tr>
-					<td>
-						<label>Nome do Cliente:</label>
-					</td>
-					<td>
-						<input type="text"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Sexo:</label>
-					</td>
-					<td>
-						<select id="Sexo">
-							<option value="Masculino">Masculino</option>
-							<option value="Feminino">Feminino</option>
-							<option value="Não especifico">Não especifico</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Email:</label>
-					</td>
-					<td>
-						<input type="text"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Telemóvel:</label>
-					</td>
-					<td>
-						<input type="number"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Códico de acesso:</label>
-					</td>
-					<td>
-						<input type="number"/>
-					</td>
-				</tr>
-			</table>
-			<button>Cancelar</button>
-			<button>Criar</button>
+			<form action="administrador.html">
+				<table>
+					<tr>
+						<td>
+							<label for="nome-cliente">Nome do Cliente:</label>
+						</td>
+						<td>
+							<input id="nome-cliente" type="text"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>Sexo:</label>
+						</td>
+						<td>
+							<select id="sexo">
+								<option value="Masculino">Masculino</option>
+								<option value="Feminino">Feminino</option>
+								<option value="Não especifico">Não especifico</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="email">Email:</label>
+						</td>
+						<td>
+							<input id="email" type="text"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="telemovel">Telemóvel:</label>
+						</td>
+						<td>
+							<input id="telemovel" type="number"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="codico-acesso">Códico de acesso:</label>
+						</td>
+						<td>
+							<input id="codico-acesso" type="number"/>
+						</td>
+					</tr>
+				</table>
+				<a href="administrador.html"><button id="cancelar">Cancelar</button></a>
+				<button type="submit">Criar</button>
+			</form>
 	</body>
 </html>
