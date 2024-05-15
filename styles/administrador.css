@@ -1,5 +1,5 @@
 main {
-	margin: 64px;
+	margin: 64px 4rem;
 }
 
 #funcionalidades {
@@ -8,4 +8,30 @@ main {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 16px;
+}
+
+#pesquisa-entidade {
+	width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+	main {
+		margin: 32px 2rem;
+	}
+
+	#funcionalidades {
+		flex-direction: column;
+	}
+
+	#pesquisa {
+		margin-top: 16px;
+	}
+
+	#pesquisa > button {
+		margin-top: 16px;
+	}
+
+	tbody tr td:last-child {
+		padding: 0;
+	}
 }

@@ -4,27 +4,29 @@ h1 {
 }
 
 main {
-    text-align: center;
-    width: 100%;
-    margin: 0px 0;
-}
-
-.form-container {
-    display: flex;
-    justify-content: center;
+	text-align: center;
+	width: 100%;
 }
 
 form {
 	display: inline-block;
-	align-items: center;
 	font-size: 17px;
 	padding: 10px 25px;
-    width: 300px;
-    width: auto
+	margin: 10px 25px;
+	width: 300px;
+	width: auto
 }
 
 table, select {
 	text-align: center;
 	font-size: 20px;
+}
+table {
 	margin: .5em;
+}
+
+@media screen and (max-width: 800px) {
+	form, table {
+		margin: 0;
+	}
 }

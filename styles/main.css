@@ -11,7 +11,7 @@ body {
 	margin: 0;
 }
 
-button, input {
+button, input, select {
 	padding: 8px 16px;
 	border: 1px solid #000000;
 }
@@ -24,4 +24,3 @@ button {
 button:hover {
 	cursor: pointer;
 }
-

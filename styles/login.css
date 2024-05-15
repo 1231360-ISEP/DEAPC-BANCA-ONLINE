@@ -41,3 +41,16 @@ button {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+@media screen and (max-width: 800px) {
+	main {
+		height: unset;
+		display: inline-flex;
+		flex-direction: column;
+	}
+
+	form {
+		width: 100%;
+		border: 2px solid #000000;
+	}
+}
