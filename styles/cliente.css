@@ -1,0 +1,15 @@
+main {
+	margin: 64px;
+}
+
+#funcionalidades {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+#pesquisa-entidade {
+	width: 100%;
+}
