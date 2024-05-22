@@ -1,15 +1,15 @@
-main {
-	text-align: center;
+header {
+	padding: 16px;
+	text-align: right;
 }
 
 h1 {
 	margin-bottom: 128px;
+	text-align: center;
 }
 
-#texto-informativo {
-	margin-bottom: 256px;
-}
-
-#entrar {
-	display: inline-block;
+section {
+	padding: 64px 4rem;
+	color: var(--h-fg-color);
+	background-color: var(--h-bg-color);
 }

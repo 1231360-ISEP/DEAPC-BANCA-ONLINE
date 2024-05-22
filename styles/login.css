@@ -1,7 +1,7 @@
 main {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100vh;
@@ -12,14 +12,10 @@ form {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	width: 40%;
+	width: 400px;
 	height: 60%;
-	border: 1px solid #000000;
+	border: 1px solid var(--fg-color);
 	padding: 32px;
-}
-
-h2 {
-	text-align: center;
 }
 
 div {
@@ -44,13 +40,13 @@ button {
 
 @media screen and (max-width: 800px) {
 	main {
-		height: unset;
 		display: inline-flex;
 		flex-direction: column;
 	}
 
 	form {
 		width: 100%;
-		border: 2px solid #000000;
+		height: 100%;
+		border: 0;
 	}
 }

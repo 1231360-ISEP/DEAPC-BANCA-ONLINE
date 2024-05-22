@@ -1,7 +1,8 @@
 .main-table {
 	width: 100%;
 	border-collapse: collapse;
-	background-color: #eeeeee;
+	color: var(--h-fg-color);
+	background-color: var(--h-bg-color);
 }
 
 .main-table {
@@ -9,11 +10,11 @@
 }
 
 .main-table thead {
-	border-bottom: 4px solid #000000;
+	border-bottom: 4px solid var(--h-fg-color);
 }
 
 .main-table tbody tr {
-	border-top: 2px solid #000000;
+	border-top: 2px solid var(--h-fg-color);
 }
 
 .main-table th, .main-table td {

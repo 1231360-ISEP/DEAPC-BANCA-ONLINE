@@ -1,3 +1,19 @@
+:root {
+	--fg-color: #000000;
+	--bg-color: #ffffff;
+	--h-fg-color: #000000;
+	--h-bg-color: #eeeeee;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: #000000;
+		--fg-color: #ffffff;
+		--h-fg-color: #000000;
+		--h-bg-color: #afafaf;
+	}
+}
+
 *, ::before, ::after {
 	box-sizing: border-box;
 }
@@ -9,16 +25,14 @@ html {
 body {
 	font-family: sans-serif;
 	margin: 0;
+	background-color: var(--bg-color);
+	color: var(--fg-color);
 }
 
 button, input, select {
 	padding: 8px 16px;
-	border: 1px solid #000000;
-}
-
-button {
-	color: #000000;
-	background-color: #eeeeee;
+	border: 1px solid var(--h-fg-color);
+	background: var(--h-bg-color);
 }
 
 button:hover {
