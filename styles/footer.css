@@ -1,0 +1,33 @@
+footer {
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	flex-direction: row;
+	width: 100vw;
+	padding: 4px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	text-align: right;
+}
+
+footer button {
+	margin: unset;
+}
+
+footer p {
+	margin: 0;
+}
+
+footer dialog {
+	width: 80vw;
+	text-align: left;
+}
+
+#abrir-modal-footer:hover {
+	cursor: pointer;
+}
+
+#modal-footer p {
+	margin: 16px 0;
+}

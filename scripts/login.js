@@ -6,14 +6,12 @@ const mensagemErro = document.querySelector('p.erro');
 loginForm.addEventListener('submit', event => {
 	mensagemErro.innerHTML = '';
 
-	let valido = true;
-
 	const username = usernameInput.value;
 	const usernameValido = /^[A-z0-9_]+$/;
 	const password = passwordInput.value;
 
 	if(!usernameValido.test(username)) {
-		valido = false;
+		event.preventDefault();
 
 		usernameInput.classList.add('erro');
 
@@ -23,7 +21,7 @@ loginForm.addEventListener('submit', event => {
 	}
 
 	if(password.length < 8) {
-		valido = false;
+		event.preventDefault();
 
 		passwordInput.classList.add('erro');
 
@@ -31,7 +29,4 @@ loginForm.addEventListener('submit', event => {
 	}else {
 		passwordInput.classList.remove('erro');
 	}
-
-	if(!valido)
-		event.preventDefault();
 });

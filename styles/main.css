@@ -47,3 +47,8 @@ button, input, select {
 button:hover {
 	cursor: pointer;
 }
+
+dialog {
+	color: var(--h-fg-color);
+	background-color: var(--h-bg-color);
+}
