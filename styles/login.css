@@ -12,8 +12,8 @@ form {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	width: 400px;
-	height: 60%;
+	width: 600px;
+	height: 80%;
 	border: 1px solid var(--fg-color);
 	padding: 32px;
 }
@@ -36,6 +36,10 @@ input {
 button {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+p.erro {
+	width: 100%;
 }
 
 @media screen and (max-width: 800px) {

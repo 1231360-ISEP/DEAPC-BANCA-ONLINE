@@ -3,6 +3,7 @@
 	--bg-color: #ffffff;
 	--h-fg-color: #000000;
 	--h-bg-color: #eeeeee;
+	--error-color: #ff0000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,6 +13,14 @@
 		--h-fg-color: #000000;
 		--h-bg-color: #afafaf;
 	}
+}
+
+p.erro {
+	color: var(--error-color);
+}
+
+input.erro {
+	border-color: var(--error-color);
 }
 
 *, ::before, ::after {
