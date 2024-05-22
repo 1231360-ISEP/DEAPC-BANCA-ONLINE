@@ -2,7 +2,7 @@
 <html lang="pt">
 	<head>
 		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=divice, initial-scale=1"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>Banca Online - Adicionar um cliente</title>
 		<link rel="stylesheet" href="styles/main.css"/>
 		<link rel="stylesheet" href="styles/header.css"/>
@@ -15,6 +15,7 @@
 		</header>
 		<main>
 			<h1>Adicionar um cliente</h1>
+			<p class="erro"></p>
 			<form action="administrador.html">
 				<table>
 					<tr>
@@ -42,7 +43,7 @@
 							<label for="email">Email:</label>
 						</td>
 						<td>
-							<input id="email" type="email"/>
+							<input id="email" type="text"/>
 						</td>
 					</tr>
 					<tr>
@@ -55,15 +56,25 @@
 					</tr>
 					<tr>
 						<td>
-							<label for="codico-acesso">Códico de acesso:</label>
+							<label for="username">Username:</label>
 						</td>
 						<td>
-							<input id="codico-acesso" type="number"/>
+							<input id="username" type="text"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="password">Passaword:</label>
+						</td>
+						<td>
+							<input id="password" type="password"/>
 						</td>
 					</tr>
 				</table>
 				<a href="administrador.html"><button id="cancelar">Cancelar</button></a>
 				<button type="submit">Criar</button>
 			</form>
+		</main>
+		<script src="scripts/adicionar-conta.js"></script>
 	</body>
 </html>
