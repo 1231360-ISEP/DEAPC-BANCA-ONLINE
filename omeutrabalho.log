@@ -1,0 +1,125 @@
+commit 47c2250fb4a57ba8c1a0bc503303534203995c0f
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Wed May 15 15:21:36 2024 +0100
+
+    Melhoria de responsividade
+
+commit e6bb7050e33a865f1869730a93c3ee9a8bb588f9
+Author: Rodrigo <1231222@isep.ipp.pt>
+Date:   Wed May 15 11:34:24 2024 +0100
+
+    Página do cliente e aparência do mesmo
+
+commit 89322d12b9c16a260556a2a76449cfae44b3bba6
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Tue May 14 22:31:29 2024 +0100
+
+    Alterações Estéticas e Adição da aparecia na adição de clientes e adição de transações
+
+commit cd18fe10123016d5b8a4f04e383d2c9d449470ba
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Tue May 14 19:29:26 2024 +0100
+
+    Alteração da aperência da tabela de clientes
+
+commit 4841a551f2ddde83da78630e60815cfdcc013742
+Author: Rodrigo1231222 <167997757+Rodrigo1231222@users.noreply.github.com>
+Date:   Tue May 14 18:11:11 2024 +0100
+
+    grupo.txt adicionado
+
+commit 47044317fea4202f593f4b8109b9561676b4aad3
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Tue May 14 18:04:38 2024 +0100
+
+    Material Symbols adicionados
+
+commit 2688d639c111f7cc00edc88919b511cc82a203a8
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Tue May 14 17:52:55 2024 +0100
+
+    Tabela de Administrador Criada
+
+commit 18bb7458be343581fbaea8512a1f8d40aa202e03
+Author: Rodrigo <1231222>
+Date:   Tue May 14 17:49:23 2024 +0100
+
+    Pagina de adicionar transações
+
+commit ae899f883c42cf0e2ac5481ef214ca798a9f20eb
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Tue May 14 16:28:58 2024 +0100
+
+    Adicionada HTML ADMIN
+
+commit afd4c477136b1c50b942376e735a3cc5075216dc
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Tue May 14 16:27:42 2024 +0100
+
+    Página de login adicionada
+
+commit 71e8fa70b23123986f3de12820a95caa96011488
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Tue May 14 15:11:25 2024 +0100
+
+    main.css adicionado
+
+commit b0853a55ac14c70180d7266bc71d905e20fec88d
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Mon May 13 17:01:17 2024 +0100
+
+    Reteficação do Texto
+
+commit b1bf7db769a35230301e71621c70e63472a97034
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Mon May 13 16:39:39 2024 +0100
+
+    Hierarquia de páginas adicionada
+
+commit e4500b6d89bb5edb78cbfa5f1a51045e5bda1394
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Mon May 13 15:43:30 2024 +0100
+
+    Renomeação dos níveis de Prioridade
+
+commit b3c0adc227995542e627a9f13b97391bc2249ef8
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Mon May 13 15:33:01 2024 +0100
+
+    Cabeçalho das tabelas das User Stories corrijidos
+
+commit 88be89dde4537f7a835fea49729da8937a9c5af2
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Mon May 13 15:27:44 2024 +0100
+
+    User Stories adicionadas
+
+commit 3783c61dbc5f4c3f7d3993781394e187fb1f0319
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Mon May 13 14:39:07 2024 +0100
+
+    Versão Final
+
+commit 8a34467c0c7cbfe3745a4f3e1f4538e7ba149558
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Wed Apr 24 16:22:11 2024 +0100
+
+    Atualização do README
+
+commit 5c2c6ce9b9ac86e30d66733e50edf29078e37945
+Author: Rodrigo <1230539@isep.ipp.pt>
+Date:   Wed Apr 24 15:30:44 2024 +0100
+
+    Atualização
+
+commit 6d0c201caf436859a1c42a95f3d5db05bf77d5d1
+Author: Rodrigo <1231222>
+Date:   Wed Apr 24 15:26:32 2024 +0100
+
+    Atualizzação
+
+commit cd6a852806ec6f19301c44b31fd70fa11a431074
+Author: 1231360 ISEP <1231360@isep.ipp.pt>
+Date:   Wed Apr 24 16:09:37 2024 +0100
+
+    README.md added
