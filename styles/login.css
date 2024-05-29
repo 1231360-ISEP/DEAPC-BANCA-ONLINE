@@ -1,3 +1,15 @@
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 16px;
+}
+
+header p {
+	margin: 0;
+	color: var(--fg-color);
+}
+
 main {
 	display: flex;
 	flex-direction: row;

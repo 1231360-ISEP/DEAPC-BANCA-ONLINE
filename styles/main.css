@@ -25,6 +25,7 @@ input.erro {
 
 *, ::before, ::after {
 	box-sizing: border-box;
+	color: inherit;
 }
 
 html {
@@ -41,6 +42,7 @@ body {
 button, input, select {
 	padding: 8px 16px;
 	border: 1px solid var(--h-fg-color);
+	color: var(--h-fg-color);
 	background: var(--h-bg-color);
 }
 
