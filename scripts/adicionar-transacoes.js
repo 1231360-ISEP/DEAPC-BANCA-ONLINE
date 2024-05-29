@@ -5,11 +5,11 @@ const mgsErro = document.querySelector('p.erro');
 transacaoForm.addEventListener('submit', event => {
 	mgsErro.innerHTML='';
 	const entidade = entidadeInput.value;
-	const entidadeValido = /^[0-9]+$/;
+	const entidadeValido = /^[0-9]{5}$/;
 	const montante = montanteInput.value;
 	const montanteValido = /^[0-9,.]+$/;
 
-	if(entidade.length !== 5 || !entidadeValido.test(entidade)){
+	if(!entidadeValido.test(entidade)){
 		event.preventDefault();
 		entidadeInput.classList.add('erro');
 		mgsErro.innerHTML += 'A entidade deve ter extatamente 5 digitos numéricos<br/>';
@@ -25,4 +25,4 @@ transacaoForm.addEventListener('submit', event => {
 	}else{
 		montanteInput.classList.remove('erro');
 	}
-	});
+});
