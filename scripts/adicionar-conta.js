@@ -4,8 +4,9 @@ const emailInput = document.querySelector('#email');
 const telemovelInput = document.querySelector('#telemovel');
 const usernameInput = document.querySelector('#username');
 const passInput = document.querySelector('#password');
+const ibanInput= document.querySelector('#iban-cliente')
 const mgsErro = document.querySelector('p.erro');
-console.log(nomeInput);
+
 clienteForm.addEventListener('submit', event => {
 	mgsErro.innerHTML = '';
 
@@ -17,6 +18,8 @@ clienteForm.addEventListener('submit', event => {
 	const usernamecliente = usernameInput.value;
 	const usernameValido = /^[A-z0-9_]+$/;
 	const passwordcliente = passInput.value;
+	const ibancliente = ibanInput.value;
+	const ibanclienteValido = /^[A-Z]{2}[0-9]{23}$/;
 
 	if (!nomeclienteValido.test(nomecliente)) {
 		event.preventDefault();
@@ -63,4 +66,15 @@ clienteForm.addEventListener('submit', event => {
 		passInput.classList.remove('erro');
 	}
 	
+	if(!ibanclienteValido.test(ibancliente)){
+		event.preventDefault(); 
+
+		ibanInput.classList.add('erro');
+		mgsErro.innerHTML += 'O IBAN é constituído por duas letras inciais e 23 números<br/>';
+	}else {
+		ibanInput.classList.remove('erro');
+	}
+
 	});
+
+	
