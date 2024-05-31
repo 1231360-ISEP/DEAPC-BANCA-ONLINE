@@ -59,3 +59,23 @@ Níveis de prioridade:
         - Página de criação de uma nova conta
     - Página de cliente
         - Página de criação de uma transação
+
+## Base de dados
+
+**Utilizadores**
+- id
+- username
+- password
+- tipo
+- nome_cliente
+- IBAN_cliente
+- sexo_cliente
+- email_cliente
+- telemovel_cliente
+
+**Transacoes**
+- id
+- montante
+- data
+- IBAN_transacao
+- id_utilizador (Utilizadores)
