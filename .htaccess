@@ -1,0 +1,10 @@
+<Files base-dados.php>
+AuthType Basic
+AuthName "Inicializar base de dados"
+Require valid-user
+AuthUserFile .htpasswd
+</Files>
+
+<Files README.md>
+Require all denied
+</Files>

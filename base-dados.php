@@ -1,7 +1,5 @@
 <?php
-function inicializar_base_dados() {
-	$base_dados = new SQLite3('banca-online.db', SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
-
+function inicializar_base_dados($base_dados) {
 	$base_dados->query(
 	'CREATE TABLE IF NOT EXISTS Utilizadores(' .
 	'id INTEGER PRIMARY KEY AUTOINCREMENT,' .
@@ -23,23 +21,24 @@ function inicializar_base_dados() {
 	'IBAN_transacao VARCHAR(34) NOT NULL,' .
 	'id_utilizador INTEGER NOT NULL REFERENCES Utilizadores(id))'
 	);
-
-	$base_dados->close();
 }
 
-function adicionar_administrador($username, $password) {
-	$base_dados = new SQLite3('banca-online.db', SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
-
-	$query = $base_dados->prepare("INSERT INTO Utilizadores(username, password, tipo) VALUES (:username, :password, 0)");
+function adicionar_administrador($base_dados, $username, $password) {
+	$query = $base_dados->prepare("INSERT OR IGNORE INTO Utilizadores(username, password, tipo) VALUES (:username, :password, 0)");
 	$query->bindParam(':username', $username, SQLITE3_TEXT);
 	$query->bindParam(':password', $password, SQLITE3_TEXT);
 	$query->execute();
-
-	$base_dados->close();
 }
 
-inicializar_base_dados();
-adicionar_administrador('leonardo_silva', '12345678');
-adicionar_administrador('rodrigo_delgado', '12345678');
-adicionar_administrador('rodrigo_rocha', '12345678');
+$base_dados = new SQLite3('banca-online.db', SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+$base_dados->enableExceptions(true);
+
+inicializar_base_dados($base_dados);
+adicionar_administrador($base_dados, 'leonardo_silva', '12345678');
+adicionar_administrador($base_dados, 'rodrigo_delgado', '12345678');
+adicionar_administrador($base_dados, 'rodrigo_rocha', '12345678');
+
+$base_dados->close();
+
+header('Location: index.php');
 ?>
