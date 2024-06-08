@@ -1,3 +1,14 @@
+<?php session_start(); ?>
+<?php
+	require 'seguranca.php';
+
+	assegura_login();
+	$base_dados = new SQLite3('banca-online.db', SQLITE3_OPEN_READONLY);
+	$base_dados->enableExceptions(true);
+	
+	// Obter todos os clientes
+	$query = $base_dados->query("SELECT * FROM Utilizadores WHERE tipo = 1");
+	?>
 <!DOCTYPE html>
 <html lang="pt">
 	<head>
@@ -10,8 +21,8 @@
 	</head>
 	<body>
 		<header>
-			<p>[Administrador]</p>
-			<a href="login.html"><button id="sair">Sair</button></a>
+		<p><?= $_SESSION['username'] ?></p>
+			<a href="sair.php"><button id="sair">Sair</button></a>
 		</header>
 		<main>
 			<h1>Adicionar um cliente</h1>

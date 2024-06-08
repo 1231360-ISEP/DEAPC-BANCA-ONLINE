@@ -1,3 +1,9 @@
+<?php session_start(); ?>
+<?php 
+	require 'segurança.php';
+
+	assegura_login();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 	<head>
@@ -12,8 +18,8 @@
 	</head>
 	<body>
 		<header>
-			<p>[Cliente]</p>
-			<a href="login.html"><button id="sair">Sair</button></a>
+			<p><?= $_SESSION['username'] ?></p>
+			<a href="sair.php"><button id="sair">Sair</button></a>
 		</header>
 		<main>
 			<h1>Histórico de transações</h1>
@@ -80,5 +86,6 @@
 				</tbody>
 			</table>
 		</main>
+		<?php include 'footer.php'; ?>
 	</body>
 </html>
