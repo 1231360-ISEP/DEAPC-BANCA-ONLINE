@@ -13,4 +13,52 @@ function assegura_sem_login() {
 		header('Location: administrador.php');
 	}
 }
+
+function assegura_login_administrador() {
+	if(!isset($_SESSION['username'])) {
+		header('Location: login.php');
+
+		return;
+	}
+
+	if(!isset($_SESSION['role'])) {
+		session_destroy();
+
+		header('Location: login.php');
+
+		return;
+	}
+
+	if($_SESSION['role'] != ROLE_ADMINISTRADOR) {
+		session_destroy();
+
+		header('Location: login.php');
+
+		return;
+	}
+}
+
+function assegura_login_cliente() {
+	if(!isset($_SESSION['username'])) {
+		header('Location: login.php');
+
+		return;
+	}
+
+	if(!isset($_SESSION['role'])) {
+		session_destroy();
+
+		header('Location: login.php');
+
+		return;
+	}
+
+	if($_SESSION['role'] != ROLE_CLIENTE) {
+		session_destroy();
+
+		header('Location: login.php');
+
+		return;
+	}
+}
 ?>

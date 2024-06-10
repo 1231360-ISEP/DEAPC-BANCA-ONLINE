@@ -1,4 +1,4 @@
-<Files base-dados.php>
+<Files iniciar-base-dados.php>
 AuthType Basic
 AuthName "Inicializar base de dados"
 Require valid-user

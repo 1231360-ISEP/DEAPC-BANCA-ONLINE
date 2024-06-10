@@ -1,14 +1,76 @@
 <?php session_start(); ?>
 <?php
-	require 'seguranca.php';
+require 'seguranca.php';
+require 'base-dados.php';
 
-	assegura_login();
-	$base_dados = new SQLite3('banca-online.db', SQLITE3_OPEN_READONLY);
-	$base_dados->enableExceptions(true);
-	
-	// Obter todos os clientes
-	$query = $base_dados->query("SELECT * FROM Utilizadores WHERE tipo = 1");
-	?>
+assegura_login_administrador();
+
+function validar_input(&$username, &$password, &$nome_cliente, &$IBAN_cliente, &$sexo_cliente, &$email_cliente, &$telemovel_cliente) {
+	if(!isset($_POST['username']))
+		return false;
+
+	if(!isset($_POST['password']))
+		return false;
+
+	if(!isset($_POST['nome_cliente']))
+		return false;
+
+	if(!isset($_POST['IBAN_cliente']))
+		return false;
+
+	if(!isset($_POST['sexo_cliente']))
+		return false;
+
+	if(!isset($_POST['telemovel_cliente']))
+		return false;
+
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	$nome_cliente = $_POST['nome_cliente'];
+	$IBAN_cliente = $_POST['IBAN_cliente'];
+	$sexo_cliente = $_POST['sexo_cliente'];
+	$email_cliente = $_POST['email_cliente'];
+	$telemovel_cliente = $_POST['telemovel_cliente'];
+
+	return true;
+}
+
+function criar_cliente($base_dados, $username, $password, $tipo, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente) {
+	try {
+		$query = $base_dados->prepare(
+			"INSERT INTO Utilizadores (username, password, tipo, nome_cliente, IBAN_cliente, sexo_cliente, email_cliente, telemovel_cliente) VALUES (:username, :password, :tipo, :nome_cliente, :IBAN_cliente, :sexo_cliente, :email_cliente, :telemovel_cliente)"
+		);
+
+		$username = $nome_cliente;
+		$password = password_hash('senha_temporaria', PASSWORD_DEFAULT); // Criar uma senha temporária ou outra lógica de senha
+		$tipo = 1;
+
+		$query->bindParam(':username', $username, SQLITE3_TEXT);
+		$query->bindParam(':password', $password, SQLITE3_TEXT);
+		$query->bindParam(':tipo', $tipo, SQLITE3_INTEGER);
+		$query->bindParam(':nome_cliente', $nome_cliente, SQLITE3_TEXT);
+		$query->bindParam(':IBAN_cliente', $IBAN_cliente, SQLITE3_TEXT);
+		$query->bindParam(':sexo_cliente', $sexo_cliente, SQLITE3_INTEGER);
+		$query->bindParam(':email_cliente', $email_cliente, SQLITE3_TEXT);
+		$query->bindParam(':telemovel_cliente', $telemovel_cliente, SQLITE3_TEXT);
+
+		$query->execute();
+		$_GET['mensagem'] = "Cliente adicionado com sucesso!";
+
+		header('Location: administrador.php');
+	} catch (Exception $e) {
+		error_log($e->getMessage);
+	}
+}
+
+obter_base_dados($base_dados);
+
+if(validar_input($password, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente)) {
+	criar_cliente($base_dados, $username, $password, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente);
+}
+
+$base_dados->close();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 	<head>
@@ -21,13 +83,13 @@
 	</head>
 	<body>
 		<header>
-		<p><?= $_SESSION['username'] ?></p>
+			<p><?= $_SESSION['username'] ?></p>
 			<a href="sair.php"><button id="sair">Sair</button></a>
 		</header>
 		<main>
 			<h1>Adicionar um cliente</h1>
 			<p class="erro"></p>
-			<form action="administrador.html">
+			<form method="post">
 				<table>
 					<tr>
 						<td>

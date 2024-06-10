@@ -1,44 +1,6 @@
 <?php
-function inicializar_base_dados($base_dados) {
-	$base_dados->query(
-	'CREATE TABLE IF NOT EXISTS Utilizadores(' .
-	'id INTEGER PRIMARY KEY AUTOINCREMENT,' .
-	'username VACHAR(32) NOT NULL UNIQUE,' .
-	'password VARCHAR(256) NOT NULL,' .
-	'tipo INT NOT NULL,' .
-	'nome_cliente VARCHAR(128),' .
-	'IBAN_cliente VARCHAR(34),' .
-	'sexo_cliente INT,' .
-	'email_cliente VARCHAR(256),' .
-	'telemovel_cliente INT)'
-	);
-
-	$base_dados->query(
-	'CREATE TABLE IF NOT EXISTS Transacoes(' .
-	'id INTEGER PRIMARY KEY AUTOINCREMENT,' .
-	'montante FLOAT NOT NULL,' .
-	'data INT NOT NULL,' .
-	'IBAN_transacao VARCHAR(34) NOT NULL,' .
-	'id_utilizador INTEGER NOT NULL REFERENCES Utilizadores(id))'
-	);
+function obter_base_dados(&$base_dados) {
+	$base_dados = new SQLite3('banca-online.db', SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+	$base_dados->enableExceptions(true);
 }
-
-function adicionar_administrador($base_dados, $username, $password) {
-	$query = $base_dados->prepare("INSERT OR IGNORE INTO Utilizadores(username, password, tipo) VALUES (:username, :password, 0)");
-	$query->bindParam(':username', $username, SQLITE3_TEXT);
-	$query->bindParam(':password', $password, SQLITE3_TEXT);
-	$query->execute();
-}
-
-$base_dados = new SQLite3('banca-online.db', SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
-$base_dados->enableExceptions(true);
-
-inicializar_base_dados($base_dados);
-adicionar_administrador($base_dados, 'leonardo_silva', '12345678');
-adicionar_administrador($base_dados, 'rodrigo_delgado', '12345678');
-adicionar_administrador($base_dados, 'rodrigo_rocha', '12345678');
-
-$base_dados->close();
-
-header('Location: index.php');
 ?>

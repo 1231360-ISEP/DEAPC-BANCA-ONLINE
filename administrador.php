@@ -2,7 +2,7 @@
 <?php
 	require 'seguranca.php';
 
-	assegura_login();
+	assegura_login_administrador();
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -23,7 +23,7 @@
 		<main>
 			<h1>Gestão de contas</h1>
 			<div id="funcionalidades">
-				<a href="adicionar-conta.html"><button id="adicionar-conta">+ Adicionar Cliente</button></a>
+				<a href="adicionar-conta.php"><button id="adicionar-conta">+ Adicionar Cliente</button></a>
 				<div id="pesquisa">
 					<label for="pesquisa-nome">Nome:</label>
 					<input id="pesquisa-nome" type="text"/>
