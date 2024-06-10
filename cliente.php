@@ -1,8 +1,8 @@
 <?php session_start(); ?>
-<?php 
-	require 'segurança.php';
+<?php
+require 'seguranca.php';
 
-	assegura_login();
+assegura_login();
 ?>
 <!DOCTYPE html>
 <html lang="pt">

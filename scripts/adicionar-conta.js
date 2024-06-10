@@ -28,7 +28,7 @@ clienteForm.addEventListener('submit', event => {
 		mgsErro.innerHTML += 'O nome do cliente não pode conter números, apenas letras e espaços<br/>';
 	} else {
 		nomeInput.classList.remove('erro');
-	} 
+	}
 
 	if (!emailclienteValido.test(emailcliente)) {
 		event.preventDefault();
@@ -39,7 +39,7 @@ clienteForm.addEventListener('submit', event => {
 		emailInput.classList.remove('erro');
 	}
 
-	if (telemovelcliente.length < 10) {
+	if (telemovelcliente.length != 9) {
 		event.preventDefault();
 
 		telemovelInput.classList.add ('erro');
@@ -65,16 +65,13 @@ clienteForm.addEventListener('submit', event => {
 	}else {
 		passInput.classList.remove('erro');
 	}
-	
+
 	if(!ibanclienteValido.test(ibancliente)){
-		event.preventDefault(); 
+		event.preventDefault();
 
 		ibanInput.classList.add('erro');
 		mgsErro.innerHTML += 'O IBAN é constituído por duas letras inciais e 23 números<br/>';
 	}else {
 		ibanInput.classList.remove('erro');
 	}
-
-	});
-
-	
+});

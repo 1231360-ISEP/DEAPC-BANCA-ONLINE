@@ -38,15 +38,14 @@ function validar_input(&$username, &$password, &$nome_cliente, &$IBAN_cliente, &
 	return true;
 }
 
-function criar_cliente($base_dados, $username, $password, $tipo, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente) {
+function criar_cliente($base_dados, $username, $password, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente) {
 	try {
 		$query = $base_dados->prepare(
-			"INSERT INTO Utilizadores (username, password, tipo, nome_cliente, IBAN_cliente, sexo_cliente, email_cliente, telemovel_cliente) VALUES (:username, :password, :tipo, :nome_cliente, :IBAN_cliente, :sexo_cliente, :email_cliente, :telemovel_cliente)"
+			'INSERT INTO Utilizadores (username, password, tipo, nome_cliente, IBAN_cliente, sexo_cliente, email_cliente, telemovel_cliente) VALUES (:username, :password, :tipo, :nome_cliente, :IBAN_cliente, :sexo_cliente, :email_cliente, :telemovel_cliente)'
 		);
 
-		$username = $nome_cliente;
-		$password = password_hash('senha_temporaria', PASSWORD_DEFAULT); // Criar uma senha temporária ou outra lógica de senha
-		$tipo = 1;
+		$password = password_hash($password, PASSWORD_DEFAULT);
+		$tipo = ROLE_CLIENTE;
 
 		$query->bindParam(':username', $username, SQLITE3_TEXT);
 		$query->bindParam(':password', $password, SQLITE3_TEXT);
@@ -58,9 +57,7 @@ function criar_cliente($base_dados, $username, $password, $tipo, $nome_cliente, 
 		$query->bindParam(':telemovel_cliente', $telemovel_cliente, SQLITE3_TEXT);
 
 		$query->execute();
-		$_GET['mensagem'] = "Cliente adicionado com sucesso!";
-
-		header('Location: administrador.php');
+		$_GET['mensagem'] = 'Cliente adicionado com sucesso!';
 	} catch (Exception $e) {
 		error_log($e->getMessage);
 	}
@@ -68,8 +65,10 @@ function criar_cliente($base_dados, $username, $password, $tipo, $nome_cliente, 
 
 obter_base_dados($base_dados);
 
-if(validar_input($password, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente)) {
+if(validar_input($username, $password, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente)) {
 	criar_cliente($base_dados, $username, $password, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_cliente, $telemovel_cliente);
+
+	header('Location: administrador.php');
 }
 
 $base_dados->close();
@@ -120,7 +119,7 @@ $base_dados->close();
 							<label for="email">Email:</label>
 						</td>
 						<td>
-							<input nome="email_cliente" id="email" type="text"/>
+							<input name="email_cliente" id="email" type="text"/>
 						</td>
 					</tr>
 					<tr>
@@ -141,7 +140,7 @@ $base_dados->close();
 					</tr>
 					<tr>
 						<td>
-							<label for="password">Passaword:</label>
+							<label for="password">Password:</label>
 						</td>
 						<td>
 							<input name="password" id="password" type="password"/>
