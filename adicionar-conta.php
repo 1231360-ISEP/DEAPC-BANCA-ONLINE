@@ -21,6 +21,9 @@ function validar_input(&$username, &$password, &$nome_cliente, &$IBAN_cliente, &
 	if(!isset($_POST['sexo_cliente']))
 		return false;
 
+	if(!isset($_POST['email_cliente']))
+		return false;
+
 	if(!isset($_POST['telemovel_cliente']))
 		return false;
 
@@ -70,6 +73,7 @@ if(validar_input($password, $nome_cliente, $IBAN_cliente, $sexo_cliente, $email_
 }
 
 $base_dados->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -96,7 +100,7 @@ $base_dados->close();
 							<label for="nome-cliente">Nome do Cliente:</label>
 						</td>
 						<td>
-							<input id="nome-cliente" type="text"/>
+							<input name="nome_cliente" id="nome-cliente" type="text"/>
 						</td>
 					</tr>
 					<tr>
@@ -104,7 +108,7 @@ $base_dados->close();
 							<label for="sexo">Sexo:</label>
 						</td>
 						<td>
-							<select id="sexo">
+							<select name="sexo_cliente" id="sexo">
 								<option value="masculino">Masculino</option>
 								<option value="feminino">Feminino</option>
 								<option value="nao_especifico" selected>Não especifico</option>
@@ -116,7 +120,7 @@ $base_dados->close();
 							<label for="email">Email:</label>
 						</td>
 						<td>
-							<input id="email" type="text"/>
+							<input nome="email_cliente" id="email" type="text"/>
 						</td>
 					</tr>
 					<tr>
@@ -124,7 +128,7 @@ $base_dados->close();
 							<label for="telemovel">Telemóvel:</label>
 						</td>
 						<td>
-							<input id="telemovel" type="number"/>
+							<input name="telemovel_cliente" id="telemovel" type="number"/>
 						</td>
 					</tr>
 					<tr>
@@ -132,7 +136,7 @@ $base_dados->close();
 							<label for="username">Username:</label>
 						</td>
 						<td>
-							<input id="username" type="text"/>
+							<input name="username" id="username" type="text"/>
 						</td>
 					</tr>
 					<tr>
@@ -140,7 +144,7 @@ $base_dados->close();
 							<label for="password">Passaword:</label>
 						</td>
 						<td>
-							<input id="password" type="password"/>
+							<input name="password" id="password" type="password"/>
 						</td>
 					</tr>
 					<tr>
@@ -148,11 +152,11 @@ $base_dados->close();
 							<label for="iban-cliente">IBAN do cliente:</label>
 						</td>
 						<td>
-							<input id="iban-cliente" type="text"/>
+							<input name="IBAN_cliente" id="iban-cliente" type="text"/>
 						</td>
 					</tr>
 				</table>
-				<a href="administrador.html"><button id="cancelar">Cancelar</button></a>
+				<a href="administrador.php"><button id="cancelar">Cancelar</button></a>
 				<button type="submit">Criar</button>
 			</form>
 		</main>
