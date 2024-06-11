@@ -8,8 +8,9 @@ function inicializar_base_dados($base_dados) {
 	'id INTEGER PRIMARY KEY AUTOINCREMENT,' .
 	'username VACHAR(32) NOT NULL UNIQUE,' .
 	'password VARCHAR(256) NOT NULL,' .
-	'ultimo_login INT,' .
 	'tipo INT NOT NULL,' .
+	'estado INT NOT NULL DEFAULT 0,' .
+	'ultimo_login INT NOT NULL DEFAULT 0,' .
 	'nome_cliente VARCHAR(128),' .
 	'IBAN_cliente VARCHAR(34),' .
 	'sexo_cliente INT,' .

@@ -3,16 +3,49 @@
 require 'seguranca.php';
 require 'base-dados.php';
 
-function escrever_cliente($linha_cliente) {
+function obter_saldo_cliente($base_dados, $id_cliente) {
+	$saldo = 0;
+
+	try {
+		$query = $base_dados->prepare('SELECT montante FROM Transacoes WHERE id_utilizador = :id_cliente');
+		$query->bindParam(':id_cliente', $id_cliente, SQLITE3_INTEGER);
+		$result = $query->execute();
+
+		while($linha = $result->fetchArray(SQLITE3_NUM))
+			$saldo += $linha[0];
+	}catch(Exception $exception) {
+		error_log($exception->getMessage());
+	}
+
+	return $saldo;
+}
+
+function escrever_cliente($linha_cliente, $saldo) {
+	$estado_conta = "";
+
+	switch($linha_cliente[2]) {
+		case ESTADO_CONTA_ATIVADA:
+			$estado_conta = "Ativada";
+			break;
+		case ESTADO_CONTA_DESATIVADA:
+			$estado_conta = "Desativada";
+			break;
+		case ESTADO_CONTA_ELIMINADA:
+			$estado_conta = "Eliminada";
+			break;
+	}
 ?>
 	<tr>
 		<td><?= $linha_cliente[0] ?></td>
 		<td><?= $linha_cliente[1] ?></td>
-		<td>654,67€</td>
-		<td>Ativa</td>
+		<td><?= $saldo ?>€</td>
+		<td><?= $estado_conta ?></td>
 		<td>
-			<img alt="Desativar utilizador" src="images/material-symbols/block.svg"/>
-			<img alt="Remover utilizador" src="images/material-symbols/delete.svg"/>
+			<form method="post">
+				<input name="id" value="<?= $linha_cliente[3] ?>" type="hidden"/>
+				<button name="acao" value="desativar" type="submit" class="acao"><img alt="Desativar utilizador" src="images/material-symbols/block.svg"/></button>
+				<button name="acao" value="eliminar" type="submit" class="acao"><img alt="Remover utilizador" src="images/material-symbols/delete.svg"/></button>
+			</form>
 		</td>
 	</tr>
 <?php
@@ -30,20 +63,56 @@ function listar_clientes($base_dados) {
 	try {
 		$role = ROLE_CLIENTE;
 
-		$query = $base_dados->prepare("SELECT IBAN_cliente, nome_cliente FROM Utilizadores WHERE nome_cliente LIKE :nome");
-		// $query->bindParam(':role', $role, SQLITE3_INTEGER);
+		$query = $base_dados->prepare("SELECT IBAN_cliente, nome_cliente, estado, id FROM Utilizadores WHERE tipo = :role AND nome_cliente LIKE :nome");
+		$query->bindParam(':role', $role, SQLITE3_INTEGER);
 		$query->bindParam(':nome', $nome, SQLITE3_TEXT);
 		$result = $query->execute();
 
-		while($linha = $result->fetchArray(SQLITE3_NUM))
-			escrever_cliente($linha);
+		while($linha = $result->fetchArray(SQLITE3_NUM)) {
+			$saldo = obter_saldo_cliente($base_dados, $linha[3]);
+
+			escrever_cliente($linha, $saldo);
+		}
 	}catch(Exception $exception) {
 		error_log($exception->getMessage());
 	}
 }
 
+function validar_input(&$acao, &$id) {
+	if(!isset($_POST['acao']))
+		return false;
+
+	if(!isset($_POST['id']))
+		return false;
+
+	$acao = $_POST['acao'];
+	$id = $_POST['id'];
+
+	return true;
+}
+
+function alterar_estado_utilizador($base_dados, $id, $estado) {
+	try {
+		$query = $base_dados->prepare('UPDATE Utilizadores SET estado = :estado WHERE id = :id');
+		$query->bindParam(':estado', $estado, SQLITE3_INTEGER);
+		$query->bindParam(':id', $id, SQLITE3_INTEGER);
+		$query->execute();
+	}catch(Exception $exception) {
+		error_log($exception->getMessage);
+	}
+}
+
 assegura_login_administrador();
 obter_base_dados($base_dados);
+
+if(validar_input($acao, $id)) {
+	error_log($acao);
+
+	if($acao == 'desativar')
+		alterar_estado_utilizador($base_dados, $id, ESTADO_CONTA_DESATIVADA);
+	else if($acao == 'eliminar')
+		alterar_estado_utilizador($base_dados, $id, ESTADO_CONTA_ELIMINADA);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt">

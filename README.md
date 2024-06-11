@@ -67,6 +67,8 @@ Níveis de prioridade:
 - username
 - password
 - tipo
+- estado
+- ultimo_login
 - nome_cliente
 - IBAN_cliente
 - sexo_cliente

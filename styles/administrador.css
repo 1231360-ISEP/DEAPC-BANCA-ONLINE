@@ -14,6 +14,11 @@ main {
 	width: 100%;
 }
 
+button.acao {
+	border: 0;
+	padding: 0;
+}
+
 @media screen and (max-width: 800px) {
 	main {
 		margin: 32px 2rem;
