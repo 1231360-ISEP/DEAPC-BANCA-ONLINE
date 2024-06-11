@@ -2,7 +2,7 @@
 <?php
 require 'seguranca.php';
 
-assegura_login();
+assegura_login_cliente();
 ?>
 <!DOCTYPE html>
 <html lang="pt">

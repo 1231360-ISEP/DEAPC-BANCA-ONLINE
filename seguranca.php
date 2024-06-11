@@ -9,8 +9,26 @@ function assegura_login() {
 }
 
 function assegura_sem_login() {
-	if(isset($_SESSION['username'])) {
+	if(!isset($_SESSION['username'])) {
+		return;
+	}
+
+	if(!isset($_SESSION['role'])) {
+		session_destroy();
+
+		header('Location: login.php');
+
+		return;
+	}
+
+	if($_SESSION['role'] == ROLE_ADMINISTRADOR)
 		header('Location: administrador.php');
+	else if($_SESSION['role'] == ROLE_CLIENTE)
+		header('Location: cliente.php');
+	else {
+		session_destroy();
+
+		header('Location: login.php');
 	}
 }
 
