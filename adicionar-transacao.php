@@ -1,35 +1,35 @@
 <?php session_start(); ?>
 
-<?php 
+<?php
 require 'base-dados.php';
 require 'seguranca.php';
 
 assegura_login_cliente();
 
-function validar_input(&$iban, &$montante, &$data){
-	if(!isset($_POST['iban']))
-		return false;
-
+function validar_input(&$montante, &$data, &$iban){
 	if(!isset($_POST['montante']))
 		return false;
 
 	if(!isset($_POST['data']))
 		return false;
 
-	$iban = $_POST['iban'];
+	if(!isset($_POST['iban']))
+		return false;
+
+
 	$montante = floatval($_POST['montante']);
 	$data = strtotime($_POST['data']);
+	$iban = $_POST['iban'];
 
 	error_log($data);
 
 	return true;
 }
 
-function criar_transacao($base_dados, $iban, $montante, $data){
+function criar_transacao($base_dados, $montante, $data, $iban){
 	$id_utilizador = $_SESSION['id'];
 
 	try{
-
 		$query = $base_dados->prepare(
 			'INSERT INTO Transacoes (montante, data, IBAN_transacao, id_utilizador) VALUES (:montante, :data, :iban, :id_utilizador)'
 		);
@@ -40,7 +40,6 @@ function criar_transacao($base_dados, $iban, $montante, $data){
 		$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
 
 		$query->execute();
-
 	}catch(Exception $e) {
 		error_log($e->getMessage());
 	}
@@ -50,7 +49,7 @@ function criar_transacao($base_dados, $iban, $montante, $data){
 obter_base_dados($base_dados);
 
 if(validar_input($montante, $data, $iban)){
-	criar_transacao($base_dados, $iban, $montante, $data);
+	criar_transacao($base_dados, $montante, $data, $iban);
 
 	header('Location: cliente.php');
 }

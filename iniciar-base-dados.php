@@ -8,9 +8,9 @@ function inicializar_base_dados($base_dados) {
 	'id INTEGER PRIMARY KEY AUTOINCREMENT,' .
 	'username VACHAR(32) NOT NULL UNIQUE,' .
 	'password VARCHAR(256) NOT NULL,' .
-	'tipo INT NOT NULL,' .
-	'estado INT NOT NULL DEFAULT 0,' .
-	'ultimo_login INT NOT NULL DEFAULT 0,' .
+	'tipo INTEGER NOT NULL,' .
+	'estado INTEGER NOT NULL DEFAULT 0,' .
+	'ultimo_login INTEGER NOT NULL DEFAULT 0,' .
 	'nome_cliente VARCHAR(128),' .
 	'IBAN_cliente VARCHAR(34),' .
 	'sexo_cliente INT,' .
@@ -22,7 +22,7 @@ function inicializar_base_dados($base_dados) {
 	'CREATE TABLE IF NOT EXISTS Transacoes(' .
 	'id INTEGER PRIMARY KEY AUTOINCREMENT,' .
 	'montante FLOAT NOT NULL,' .
-	'data INT NOT NULL,' .
+	'data INTEGER NOT NULL,' .
 	'IBAN_transacao VARCHAR(34) NOT NULL,' .
 	'id_utilizador INTEGER NOT NULL REFERENCES Utilizadores(id))'
 	);

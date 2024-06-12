@@ -19,7 +19,7 @@ function escrever_transacao($linha_transacao){
 function listar_transacoes($base_dados){
 	try {
 		$id_utilizador = $_SESSION['id'];
-	
+
 		$query = $base_dados->prepare("SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador");
 		$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
 		$result = $query->execute();
@@ -30,8 +30,6 @@ function listar_transacoes($base_dados){
 	} catch (Exception $exception) {
 		error_log($exception->getMessage());
 	}
-
-	
 }
 
 obter_base_dados($base_dados);
@@ -44,9 +42,9 @@ obter_base_dados($base_dados);
 		<title>Banca online - Histórico de transações</title>
 		<link rel="stylesheet" href="styles/main.css"/>
 		<link rel="stylesheet" href="styles/header.css"/>
+		<link rel="stylesheet" href="styles/footer.css"/>
 		<link rel="stylesheet" href="styles/painel.css">
 		<link rel="stylesheet" href="styles/cliente.css">
-
 	</head>
 	<body>
 		<header>
