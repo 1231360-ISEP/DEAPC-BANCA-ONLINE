@@ -16,7 +16,7 @@ function validar_input(&$username, &$password) {
 	return true;
 }
 
-function login($base_dados, &$username, $password, &$role) {
+function login($base_dados, $username, $password, &$role) {
 	$password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 	try {

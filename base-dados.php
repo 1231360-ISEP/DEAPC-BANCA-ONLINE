@@ -11,4 +11,42 @@ function obter_base_dados(&$base_dados) {
 		exit('Não foi possível abrir a base de dados');
 	}
 }
+
+function obter_id_utilizador($base_dados, $username) {
+	try {
+		$query = $base_dados->prepare('SELECT id FROM Utilizadores WHERE username = :username');
+		$query->bindParam(':username', $username, SQLITE3_TEXT);
+		$result = $query->execute();
+
+		$row = $result->fetchArray(SQLITE3_NUM);
+
+		if(!row) {
+			return false;
+		}
+
+		return $row[0];
+	}catch(Exception $exception) {
+		error_log($exception->getMessage());
+	}
+
+	return false;
+}
+
+function obter_saldo_cliente($base_dados, $id_cliente) {
+	$saldo = 0;
+
+	try {
+		$query = $base_dados->prepare('SELECT montante FROM Transacoes WHERE id = :id_cliente');
+		$query->bindParam(':id_cliente', $id_cliente, SQLITE3_INTEGER);
+		$result = $query->execute();
+
+		while($linha = $result->fetchArray(SQLITE3_NUM))
+			$saldo += $linha[0];
+	}catch(Exception $exception) {
+		error_log($exception->getMessage());
+	}
+
+	return $saldo;
+}
+
 ?>

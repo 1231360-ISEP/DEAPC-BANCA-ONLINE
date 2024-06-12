@@ -3,23 +3,6 @@
 require 'seguranca.php';
 require 'base-dados.php';
 
-function obter_saldo_cliente($base_dados, $id_cliente) {
-	$saldo = 0;
-
-	try {
-		$query = $base_dados->prepare('SELECT montante FROM Transacoes WHERE id_utilizador = :id_cliente');
-		$query->bindParam(':id_cliente', $id_cliente, SQLITE3_INTEGER);
-		$result = $query->execute();
-
-		while($linha = $result->fetchArray(SQLITE3_NUM))
-			$saldo += $linha[0];
-	}catch(Exception $exception) {
-		error_log($exception->getMessage());
-	}
-
-	return $saldo;
-}
-
 function escrever_cliente($linha_cliente, $saldo) {
 	$estado_conta = "";
 
