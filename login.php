@@ -20,8 +20,11 @@ function login($base_dados, $username, $password, &$role, &$id) {
 	$password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 	try {
-		$query = $base_dados->prepare('SELECT tipo, password, id FROM utilizadores WHERE username = :username');
+		$estado = ESTADO_CONTA_ATIVADA;
+
+		$query = $base_dados->prepare('SELECT tipo, password, id FROM utilizadores WHERE username = :username AND estado = :estado');
 		$query->bindParam(':username', $username, SQLITE3_TEXT);
+		$query->bindParam(':estado', $estado, SQLITE3_INTEGER);
 		$result = $query->execute();
 
 		$row = $result->fetchArray(SQLITE3_NUM);

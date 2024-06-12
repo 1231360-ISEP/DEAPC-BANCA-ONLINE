@@ -23,15 +23,16 @@ function listar_transacoes($base_dados){
 		if(isset($_GET['data-inicial']) && isset($_GET['data-final'])){
 			$data_inicial = strtotime($_GET['data-inicial']);
 			$data_final = strtotime($_GET['data-final']);
-			$query = $base_dados->prepare("SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador AND data >= :data_inicial AND data <= :data_final");
+
+			$query = $base_dados->prepare('SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador AND data >= :data_inicial AND data <= :data_final');
 			$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
-			$query->bindParam(':data_inicial', $data_inicial, SQLITE3_INTENGER);
-			$uqery->bindParam(':data_final', $data_final, SQLITE3_INTENGER);
+			$query->bindParam(':data_inicial', $data_inicial, SQLITE3_INTEGER);
+			$query->bindParam(':data_final', $data_final, SQLITE3_INTEGER);
 		}else {
 			$query = $base_dados->prepare("SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador");
 			$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
 		}
-		
+
 		$result = $query->execute();
 
 		while($linha = $result->fetchArray(SQLITE3_NUM)){
@@ -70,8 +71,8 @@ obter_base_dados($base_dados);
 						<tr>
 							<td><label for="pesquisa-data-inicio">Data:</label></td>
 							<td>
-								<input name="data-incial" id="pesquisa-data-inicio" type="date">
-								<input name="data-final" id="pesquisa-data-fim" type="date">
+								<input name="data-inicial" id="pesquisa-data-inicio" type="date" value="<?= isset($_GET['data-inicial']) ? $_GET['data-inicial'] : '' ?>"/>
+								<input name="data-final" id="pesquisa-data-fim" type="date" value="<?= isset($_GET['data-final']) ? $_GET['data-final'] : '' ?>"/>
 							</td>
 							<td>
 								<button>Pesquisa</button>
