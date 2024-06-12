@@ -24,7 +24,7 @@ assegura_login_cliente();
 		<main>
 			<h1>Histórico de transações</h1>
 			<div id="funcionalidades">
-				<a href="adicionar-transacao.html"><button id="adicionar-transacao">+ Adicionar transação</button></a>
+				<a href="adicionar-transacao.php"><button id="adicionar-transacao">+ Adicionar transação</button></a>
 				<div id="pesquisa">
 					<table>
 						<tr>

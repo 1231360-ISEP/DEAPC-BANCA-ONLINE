@@ -20,7 +20,7 @@ function obter_id_utilizador($base_dados, $username) {
 
 		$row = $result->fetchArray(SQLITE3_NUM);
 
-		if(!row) {
+		if(!$row) {
 			return false;
 		}
 
