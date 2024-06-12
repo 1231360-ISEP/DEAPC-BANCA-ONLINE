@@ -28,6 +28,7 @@ function escrever_cliente($linha_cliente, $saldo) {
 				<input name="id" value="<?= $linha_cliente[3] ?>" type="hidden"/>
 				<button name="acao" value="desativar" type="submit" class="acao"><img alt="Desativar utilizador" src="images/material-symbols/block.svg"/></button>
 				<button name="acao" value="eliminar" type="submit" class="acao"><img alt="Remover utilizador" src="images/material-symbols/delete.svg"/></button>
+				<button name="acao" value="ativar" type="submit" class="acao"><img alt="Ativar utilizador" src="images/material-symbols/ativar.svg"/></button>
 			</form>
 		</td>
 	</tr>
@@ -91,8 +92,10 @@ obter_base_dados($base_dados);
 if(validar_input($acao, $id)) {
 	if($acao == 'desativar')
 		alterar_estado_utilizador($base_dados, $id, ESTADO_CONTA_DESATIVADA);
-	else if($acao == 'eliminar')
+	elseif($acao == 'eliminar')
 		alterar_estado_utilizador($base_dados, $id, ESTADO_CONTA_ELIMINADA);
+	elseif($acao == 'ativar')
+		alterar_estado_utilizador($base_dados, $id, ESTADO_CONTA_ATIVADA);
 }
 ?>
 <!DOCTYPE html>
