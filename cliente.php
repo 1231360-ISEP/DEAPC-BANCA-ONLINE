@@ -20,8 +20,18 @@ function listar_transacoes($base_dados){
 	try {
 		$id_utilizador = $_SESSION['id'];
 
-		$query = $base_dados->prepare("SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador");
-		$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
+		if(isset($_GET['data-inicial']) && isset($_GET['data-final'])){
+			$data_inicial = strtotime($_GET['data-inicial']);
+			$data_final = strtotime($_GET['data-final']);
+			$query = $base_dados->prepare("SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador AND data >= :data_inicial AND data <= :data_final");
+			$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
+			$query->bindParam(':data_inicial', $data_inicial, SQLITE3_INTENGER);
+			$uqery->bindParam(':data_final', $data_final, SQLITE3_INTENGER);
+		}else {
+			$query = $base_dados->prepare("SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador");
+			$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
+		}
+		
 		$result = $query->execute();
 
 		while($linha = $result->fetchArray(SQLITE3_NUM)){
@@ -55,24 +65,20 @@ obter_base_dados($base_dados);
 			<h1>Histórico de transações</h1>
 			<div id="funcionalidades">
 				<a href="adicionar-transacao.php"><button id="adicionar-transacao">+ Adicionar transação</button></a>
-				<div id="pesquisa">
+				<form id="pesquisa" method="get">
 					<table>
-						<tr>
-							<td><label for="pesquisa-entidade">IBAN:</label></td>
-							<td><input id="pesquisa-entidade" type="number"/></td>
-							<td><button>Pesquisa</button></td>
-						</tr>
 						<tr>
 							<td><label for="pesquisa-data-inicio">Data:</label></td>
 							<td>
-								<input id="pesquisa-data-inicio" type="date">
-								-
-								<input id="pesquisa-data-fim" type="date">
+								<input name="data-incial" id="pesquisa-data-inicio" type="date">
+								<input name="data-final" id="pesquisa-data-fim" type="date">
 							</td>
-							<td></td>
+							<td>
+								<button>Pesquisa</button>
+							</td>
 						</tr>
 					</table>
-				</div>
+				</form>
 			</div>
 			<table class="main-table">
 				<thead>
