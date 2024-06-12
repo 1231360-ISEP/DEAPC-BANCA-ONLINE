@@ -88,11 +88,7 @@ function alterar_estado_utilizador($base_dados, $id, $estado) {
 assegura_login_administrador();
 obter_base_dados($base_dados);
 
-error_log('Baka!');
-
 if(validar_input($acao, $id)) {
-	error_log($acao);
-
 	if($acao == 'desativar')
 		alterar_estado_utilizador($base_dados, $id, ESTADO_CONTA_DESATIVADA);
 	else if($acao == 'eliminar')

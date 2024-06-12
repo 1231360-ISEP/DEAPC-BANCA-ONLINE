@@ -7,7 +7,7 @@ transacaoForm.addEventListener('submit', event => {
 	const iban = ibanInput.value;
 	const ibanValido = /^[A-Z]{2}[0-9]{23}$/;
 	const montante = montanteInput.value;
-	const montanteValido = /^[0-9,.]+$/;
+	const montanteValido = /^[\-0-9,.]+$/;
 
 	if(!ibanValido.test(iban)){
 		event.preventDefault();

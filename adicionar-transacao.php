@@ -26,16 +26,12 @@ function validar_input(&$iban, &$montante, &$data){
 }
 
 function criar_transacao($base_dados, $iban, $montante, $data){
-	$id_utilizador = obter_id_utilizador($base_dados, $_SESSION['username']);
-
-	if(!$id_utilizador)
-		return;
+	$id_utilizador = $_SESSION['id'];
 
 	try{
 
 		$query = $base_dados->prepare(
-			'INSERT INTO Transacoes (montante, data, IBAN_transacao, id_utilizador) VALUES(:montante, :data, :iban, :id_utilizador)'
-
+			'INSERT INTO Transacoes (montante, data, IBAN_transacao, id_utilizador) VALUES (:montante, :data, :iban, :id_utilizador)'
 		);
 
 		$query->bindParam(':montante', $montante, SQLITE3_FLOAT);

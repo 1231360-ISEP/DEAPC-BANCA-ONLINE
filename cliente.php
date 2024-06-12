@@ -1,8 +1,40 @@
 <?php session_start(); ?>
 <?php
 require 'seguranca.php';
+require 'base-dados.php';
 
 assegura_login_cliente();
+
+function escrever_transacao($linha_transacao){
+	$data = date('d/m/Y', $linha_transacao[2]);
+?>
+	<tr>
+		<td><?= $linha_transacao[0] ?></td>
+		<td><?= $linha_transacao[1] ?></td>
+		<td><?= $data ?></td>
+	</tr>
+<?php
+}
+
+function listar_transacoes($base_dados){
+	try {
+		$id_utilizador = $_SESSION['id'];
+	
+		$query = $base_dados->prepare("SELECT IBAN_transacao, montante, data FROM Transacoes WHERE id_utilizador = :id_utilizador");
+		$query->bindParam(':id_utilizador', $id_utilizador, SQLITE3_INTEGER);
+		$result = $query->execute();
+
+		while($linha = $result->fetchArray(SQLITE3_NUM)){
+			escrever_transacao($linha);
+		}
+	} catch (Exception $exception) {
+		error_log($exception->getMessage());
+	}
+
+	
+}
+
+obter_base_dados($base_dados);
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -53,39 +85,11 @@ assegura_login_cliente();
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>56789</td>
-						<td>64,93€</td>
-						<td>16/05/2024</td>
-					</tr>
-					<tr>
-						<td>23145</td>
-						<td>204,00€</td>
-						<td>14/05/2024</td>
-					</tr>
-					<tr>
-						<td>57903</td>
-						<td>60,90€</td>
-						<td>10/05/2024</td>
-					</tr>
-					<tr>
-						<td>45890</td>
-						<td>10,00€</td>
-						<td>9/05/2024</td>
-					</tr>
-					<tr>
-						<td>78347</td>
-						<td>4,99€</td>
-						<td>4/05/2024</td>
-					</tr>
-					<tr>
-						<td>90341</td>
-						<td>730,00€</td>
-						<td>3/05/2024</td>
-					</tr>
+					<?php listar_transacoes($base_dados); ?>
 				</tbody>
 			</table>
 		</main>
 		<?php include 'footer.php'; ?>
 	</body>
 </html>
+<?php $base_dados->close(); ?>
