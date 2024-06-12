@@ -16,11 +16,11 @@ function validar_input(&$username, &$password) {
 	return true;
 }
 
-function login($base_dados, $username, $password, &$role) {
+function login($base_dados, $username, $password, &$role, &$id) {
 	$password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 	try {
-		$query = $base_dados->prepare('SELECT tipo, password FROM utilizadores WHERE username = :username');
+		$query = $base_dados->prepare('SELECT tipo, password, id FROM utilizadores WHERE username = :username');
 		$query->bindParam(':username', $username, SQLITE3_TEXT);
 		$result = $query->execute();
 
@@ -41,6 +41,7 @@ function login($base_dados, $username, $password, &$role) {
 		}
 
 		$role = $row[0];
+		$id = $row[2];
 		$current_time = time();
 
 		$query = $base_dados->prepare('UPDATE Utilizadores SET ultimo_login=:ultimo_login WHERE username=:username');
@@ -60,9 +61,10 @@ assegura_sem_login();
 obter_base_dados($base_dados);
 
 if(validar_input($username, $password)) {
-	if(login($base_dados, $username, $password, $role)) {
+	if(login($base_dados, $username, $password, $role, $id)) {
 		$_SESSION['username'] = $username;
 		$_SESSION['role'] = $role;
+		$_SESSION['id'] = $id;
 
 		if($role == ROLE_ADMINISTRADOR) {
 			header('Location: administrador.php');

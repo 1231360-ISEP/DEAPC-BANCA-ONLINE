@@ -12,26 +12,6 @@ function obter_base_dados(&$base_dados) {
 	}
 }
 
-function obter_id_utilizador($base_dados, $username) {
-	try {
-		$query = $base_dados->prepare('SELECT id FROM Utilizadores WHERE username = :username');
-		$query->bindParam(':username', $username, SQLITE3_TEXT);
-		$result = $query->execute();
-
-		$row = $result->fetchArray(SQLITE3_NUM);
-
-		if(!$row) {
-			return false;
-		}
-
-		return $row[0];
-	}catch(Exception $exception) {
-		error_log($exception->getMessage());
-	}
-
-	return false;
-}
-
 function obter_saldo_cliente($base_dados, $id_cliente) {
 	$saldo = 0;
 
